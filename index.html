@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Video Stream</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold mb-8 text-center text-blue-400">Video Library</h1>
+        
+        <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            </div>
+    </div>
+
+    <script>
+        // Replace these with your actual Supabase details from Phase 1
+        const SUPABASE_URL = 'https://txufnyntlphyloyjddox.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_B8EAiTgMjvbFg1fJOTCpuA_X7E8NRVF';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadVideos() {
+            const { data, error } = await supabase.from('videos').select('*');
+            const grid = document.getElementById('video-grid');
+            
+            if (data) {
+                data.forEach(video => {
+                    const card = `
+                        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl border border-gray-700">
+                            <video controls class="w-full">
+                                <source src="${video.url}" type="video/mp4">
+                            </video>
+                            <div class="p-4">
+                                <h3 class="text-xl font-semibold">${video.title}</h3>
+                            </div>
+                        </div>`;
+                    grid.innerHTML += card;
+                });
+            }
+        }
+        loadVideos();
+    </script>
+</body>
+  </html>
