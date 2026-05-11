@@ -3,91 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malikanimaker Video Pro</title>
+    <title>ProDoge Stream - High Class Video Player</title>
     
     <!-- Supabase Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
-    <!-- Tailwind CSS for Styling -->
+    <!-- Tailwind CSS for modern layout -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- High-Class Video Player (Plyr) -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    
     <style>
-        :root { --plyr-color-main: #3b82f6; } /* Custom blue theme */
-        .video-card:hover { transform: translateY(-5px); transition: 0.3s; }
+        :root {
+            --plyr-color-main: #3b82f6; /* Modern Blue */
+            --bg-color: #0a0a0b;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: #ffffff;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(15, 15, 18, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-card {
+            background: #16161a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--plyr-color-main);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .plyr--full-ui {
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0b; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #333; }
     </style>
 </head>
-<body class="bg-black text-gray-100 min-h-screen">
+<body>
 
-    <!-- Header -->
-    <nav class="border-b border-gray-800 p-6 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tighter text-blue-500">PRODOGE <span class="text-white">STREAM</span></h1>
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold">P</div>
+                <h1 class="text-xl font-bold tracking-tight">PRODOGE <span class="text-blue-500">STREAM</span></h1>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-gray-400">
+                <a href="#" class="hover:text-white transition">Home</a>
+                <a href="#" class="hover:text-white transition">Trending</a>
+                <a href="#" class="hover:text-white transition">Categories</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto p-6">
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-6 pt-12 pb-8">
+        <h2 class="text-4xl font-extrabold mb-2">Your Library</h2>
+        <p class="text-gray-400">Powered by Supabase Storage & Plyr Pro</p>
+    </header>
+
+    <!-- Video Grid -->
+    <main class="max-w-7xl mx-auto px-6 pb-20">
         <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Loading State -->
-            <div id="loading" class="text-gray-500 italic">Loading your library...</div>
+            <!-- Loading Skeleton -->
+            <div id="loading-state" class="col-span-full py-20 text-center">
+                <div class="inline-block w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                <p class="mt-4 text-gray-500">Connecting to Supabase...</p>
+            </div>
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="border-t border-gray-900 py-10 text-center text-gray-600 text-sm">
+        &copy; 2024 ProDoge Network. All videos hosted on private cloud.
+    </footer>
+
+    <!-- Video Player JS -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
     <script>
-        // Your Specific Credentials
+        // --- CONFIGURATION ---
         const SB_URL = "https://txufnyntlphyloyjddox.supabase.co";
         const SB_KEY = "sb_publishable_B8EAiTgMjvbFg1fJOTCpuA_X7E8NRVF";
-        const supabase = supabase.createClient(SB_URL, SB_KEY);
 
-        async function fetchVideos() {
-            const { data, error } = await supabase
-                .from('videos')
-                .select('*')
-                .order('created_at', { ascending: false });
+        // Initialize Supabase
+        const supabaseClient = supabase.createClient(SB_URL, SB_KEY);
 
+        async function loadGallery() {
             const grid = document.getElementById('video-grid');
-            const loading = document.getElementById('loading');
+            const loader = document.getElementById('loading-state');
 
-            if (error) {
-                grid.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
-                return;
+            try {
+                // Fetch from your 'videos' table
+                const { data: videos, error } = await supabaseClient
+                    .from('videos')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                // Hide loader
+                loader.style.display = 'none';
+
+                if (!videos || videos.length === 0) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-20 bg-gray-900 rounded-3xl border border-dashed border-gray-800">
+                            <p class="text-gray-400">No videos found in your database.</p>
+                            <p class="text-sm text-gray-600 mt-2">Add a row to your 'videos' table in Supabase to see them here.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Render Video Cards
+                videos.forEach(video => {
+                    const card = document.createElement('div');
+                    card.className = "video-card rounded-2xl overflow-hidden shadow-lg";
+                    
+                    card.innerHTML = `
+                        <div class="relative group">
+                            <video class="js-player" playsinline controls>
+                                <source src="${video.url}" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg text-white mb-1 truncate">${video.title || 'Untitled Video'}</h3>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-bold px-2 py-1 bg-blue-900/30 text-blue-400 rounded">HD</span>
+                                <span class="text-xs text-gray-500">MP4 Format</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                // Initialize Plyr for all new videos
+                const players = Plyr.setup('.js-player', {
+                    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+                    ratio: '16:9'
+                });
+
+            } catch (err) {
+                console.error("Critical Error:", err);
+                loader.innerHTML = `<p class="text-red-500 font-mono text-sm">Failed to sync: ${err.message}</p>`;
             }
-
-            loading.style.display = 'none';
-
-            if (data.length === 0) {
-                grid.innerHTML = `<p class="text-gray-500 text-center col-span-full">No videos found. Upload one in Supabase!</p>`;
-                return;
-            }
-
-            data.forEach(video => {
-                const card = document.createElement('div');
-                card.className = "video-card bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl";
-                card.innerHTML = `
-                    <div class="aspect-video bg-gray-800">
-                        <video class="player" playsinline controls>
-                            <source src="${video.url}" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div class="p-5">
-                        <h2 class="text-lg font-medium text-white truncate">${video.title}</h2>
-                        <p class="text-sm text-gray-500 mt-1">Ready to play</p>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-
-            // Initialize the high-class player for all videos
-            const players = Plyr.setup('.player', {
-                controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
-                tooltips: { controls: true }
-            });
         }
 
-        fetchVideos();
+        // Run on load
+        window.addEventListener('DOMContentLoaded', loadGallery);
     </script>
 </body>
-</html>
+        </html>
