@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dolly Hazell Viral - Adsterra Stream</title>
+    <title>Dolly Hazell Viral - Pro Stream</title>
     
-    <!-- Adsterra Pop-under Script (Pounder) -->
+    <!-- Adsterra Pop-under -->
     <script type='text/javascript' src='//pl29431666.profitablecpmratenetwork.com/05/5c/0b/055c0be78e57295232702b9697c26012.js'></script>
+    
+    <!-- Adsterra Social Bar -->
+    <script type='text/javascript' src='//pl29431670.profitablecpmratenetwork.com/e4/4d/47/e44d471718f4a4dc550fa7998e550931.js'></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,32 +18,14 @@
     <style>
         :root { --plyr-color-main: #f43f5e; --bg-main: #0f0f0f; }
         body { background-color: var(--bg-main); color: #eeeeee; font-family: 'Inter', sans-serif; margin: 0; }
-        
         .header { background: #1a1a1a; height: 60px; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #333; }
-        
         .main-container { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1000px; margin: 0 auto; }
-        
         .player-section { width: 100%; background: #000; position: relative; }
-        
-        /* Banner Ad Container - Optimized for 160x600 or responsive display */
-        .adsterra-banner { margin: 20px auto; min-height: 250px; display: flex; justify-content: center; overflow: hidden; width: 100%; }
-
-        .related-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
-            padding: 15px; 
-            width: 100%;
-        }
-        
-        .thumb-card { cursor: pointer; transition: opacity 0.2s; }
-        .thumb-card:active { opacity: 0.7; }
+        .ad-slot { margin: 15px auto; width: 100%; display: flex; justify-content: center; overflow: hidden; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; width: 100%; }
+        .thumb-card { cursor: pointer; }
         .thumb-img { width: 100%; aspect-ratio: 16/9; background: #222; border-radius: 12px; object-fit: cover; }
         .thumb-title { font-size: 13px; font-weight: 600; margin-top: 8px; color: #fff; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-        @media (min-width: 768px) {
-            .related-grid { grid-template-columns: repeat(3, 1fr); }
-        }
     </style>
 </head>
 <body>
@@ -50,43 +35,39 @@
     </header>
 
     <div class="main-container">
-        <!-- Main Player -->
+        <!-- Main Video Player -->
         <section class="player-section">
             <video id="main-player" playsinline controls preload="none">
                 <source id="player-src" src="" type="video/mp4" />
             </video>
             <div class="p-4">
-                <h2 id="now-playing-title" class="text-lg font-bold leading-tight">Loading Video...</h2>
+                <h2 id="now-playing-title" class="text-lg font-bold leading-tight">Loading content...</h2>
                 <div class="flex items-center gap-2 mt-2">
-                    <span class="bg-rose-600 text-[10px] px-2 py-0.5 rounded font-black">4K</span>
-                    <span class="text-gray-500 text-xs">11.8M views • Live HD</span>
+                    <span class="bg-rose-600 text-[10px] px-2 py-0.5 rounded font-black uppercase">4K HD</span>
+                    <span class="text-gray-500 text-xs">Premium Quality</span>
                 </div>
             </div>
         </section>
 
-        <!-- Adsterra Banner Ad (Under Video Title) -->
-        <div class="adsterra-banner">
+        <!-- 160x600 Vertical/Iframe Banner -->
+        <div class="ad-slot">
             <script type="text/javascript">
-                atOptions = {
-                    'key' : '8d8920d5802b25ef1704b9bb1e805773',
-                    'format' : 'iframe',
-                    'height' : 600,
-                    'width' : 160,
-                    'params' : {}
-                };
+                atOptions = { 'key' : '8d8920d5802b25ef1704b9bb1e805773', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
             </script>
             <script type="text/javascript" src="https://www.highperformanceformat.com/8d8920d5802b25ef1704b9bb1e805773/invoke.js"></script>
         </div>
 
-        <!-- Related Videos Title -->
-        <div class="w-full px-4 py-2 border-t border-white/10">
-            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Related Content</h3>
+        <!-- Native Banner Ad -->
+        <div class="ad-slot">
+            <script async="async" data-cfasync="false" src="https://pl29431667.profitablecpmratenetwork.com/c84d0ac35480ccf0b723758d33379d89/invoke.js"></script>
+            <div id="container-c84d0ac35480ccf0b723758d33379d89"></div>
         </div>
 
-        <!-- Related Grid -->
-        <main class="related-grid" id="video-feed">
-            <!-- Videos dynamically loaded from Supabase -->
-        </main>
+        <div class="w-full px-4 py-2 border-t border-white/10">
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">More Like This</h3>
+        </div>
+
+        <main class="related-grid" id="video-feed"></main>
     </div>
 
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
@@ -94,6 +75,9 @@
         const SB_URL = "https://txufnyntlphyloyjddox.supabase.co";
         const SB_KEY = "sb_publishable_B8EAiTgMjvbFg1fJOTCpuA_X7E8NRVF";
         const _supabase = supabase.createClient(SB_URL, SB_KEY);
+        const SMART_LINK = "https://www.profitablecpmratenetwork.com/j9ttkeweu?key=c63961149a8c38112af07c6574fe16ed";
+        
+        let linkTriggered = false;
         const player = new Plyr('#main-player', { ratio: '16:9' });
 
         async function initApp() {
@@ -112,25 +96,33 @@
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     };
                     card.innerHTML = `
-                        <img class="thumb-img" src="https://via.placeholder.com/400x225/1a1a1a/f43f5e?text=VIRAL+PLAY" alt="thumbnail">
+                        <img class="thumb-img" src="https://via.placeholder.com/400x225/1a1a1a/f43f5e?text=WATCH" alt="thumb">
                         <div class="thumb-title">${video.title}</div>
                     `;
                     feed.appendChild(card);
                 });
 
-                // Auto-fullscreen on mobile when play is pressed
-                player.on('play', () => {
-                    if (window.innerWidth < 768 && !player.fullscreen.active) {
-                        player.fullscreen.enter();
+                // SMART LINK LOGIC: Trigger at 50%
+                player.on('timeupdate', () => {
+                    const percentage = (player.currentTime / player.duration) * 100;
+                    if (percentage >= 50 && !linkTriggered) {
+                        window.open(SMART_LINK, '_blank');
+                        linkTriggered = true; 
                     }
                 });
 
-            } catch (err) { console.error("Database error:", err); }
+                // Reset trigger when a new video starts
+                player.on('play', () => {
+                    if (player.currentTime < 1) linkTriggered = false;
+                });
+
+            } catch (err) { console.error(err); }
         }
 
         function updatePlayer(url, title) {
             document.getElementById('now-playing-title').innerText = title;
             player.source = { type: 'video', sources: [{ src: url, type: 'video/mp4' }] };
+            linkTriggered = false; // Reset for new video
         }
 
         window.addEventListener('DOMContentLoaded', initApp);
