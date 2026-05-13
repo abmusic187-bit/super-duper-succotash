@@ -3,97 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dolly Hazell Viral - Professional Player</title>
+    <title>Dolly Hazell Viral - Adsterra Stream</title>
     
-    <script src="https://quge5.com/88/tag.min.js" data-zone="238405" async data-cfasync="false"></script>
+    <!-- Adsterra Pop-under Script (Pounder) -->
+    <script type='text/javascript' src='//pl29431666.profitablecpmratenetwork.com/05/5c/0b/055c0be78e57295232702b9697c26012.js'></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     
     <style>
-        :root { --plyr-color-main: #f43f5e; --bg-main: #0f0f0f; --card-bg: #1a1a1a; }
-        body { background-color: var(--bg-main); color: #eeeeee; font-family: 'Roboto', sans-serif; margin: 0; }
+        :root { --plyr-color-main: #f43f5e; --bg-main: #0f0f0f; }
+        body { background-color: var(--bg-main); color: #eeeeee; font-family: 'Inter', sans-serif; margin: 0; }
         
-        /* Header */
-        .header { background: #202020; height: 56px; display: flex; align-items: center; padding: 0 16px; position: sticky; top: 0; z-index: 100; }
+        .header { background: #1a1a1a; height: 60px; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #333; }
         
-        /* Main Player Section */
-        .player-section { background: #000; width: 100%; position: relative; }
+        .main-container { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1000px; margin: 0 auto; }
         
-        /* Ad Spaces */
-        .banner-ad { width: 100%; max-width: 728px; margin: 15px auto; min-height: 90px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .player-section { width: 100%; background: #000; position: relative; }
+        
+        /* Banner Ad Container - Optimized for 160x600 or responsive display */
+        .adsterra-banner { margin: 20px auto; min-height: 250px; display: flex; justify-content: center; overflow: hidden; width: 100%; }
 
-        /* Related Videos Grid */
         .related-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
-            gap: 12px; 
-            padding: 12px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+            gap: 10px; 
+            padding: 15px; 
+            width: 100%;
         }
         
-        .thumb-card { background: none; border: none; cursor: pointer; }
-        .thumb-img { width: 100%; aspect-ratio: 16/9; background: #333; border-radius: 8px; object-fit: cover; }
-        .thumb-title { font-size: 14px; font-weight: 500; margin-top: 6px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .thumb-meta { font-size: 12px; color: #aaa; margin-top: 4px; }
+        .thumb-card { cursor: pointer; transition: opacity 0.2s; }
+        .thumb-card:active { opacity: 0.7; }
+        .thumb-img { width: 100%; aspect-ratio: 16/9; background: #222; border-radius: 12px; object-fit: cover; }
+        .thumb-title { font-size: 13px; font-weight: 600; margin-top: 8px; color: #fff; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        @media (min-width: 1024px) {
-            .related-grid { grid-template-columns: repeat(4, 1fr); }
+        @media (min-width: 768px) {
+            .related-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <h1 class="text-rose-600 font-black text-xl italic tracking-tighter">DOLLY HAZELL <span class="text-white">VIRAL</span></h1>
+        <h1 class="text-rose-600 font-black text-xl tracking-tighter">DOLLY HAZELL <span class="text-white italic">VIRAL</span></h1>
     </header>
 
-    <div class="banner-ad" id="top-banner"></div>
-
-    <section class="player-section">
-        <video id="main-player" playsinline controls preload="none">
-            <source id="player-src" src="" type="video/mp4" />
-        </video>
-        <div class="p-4">
-            <h2 id="now-playing-title" class="text-lg font-bold">Select a video to watch</h2>
-            <div class="flex gap-2 mt-2">
-                <span class="bg-rose-600/20 text-rose-500 text-[10px] px-2 py-1 rounded font-bold">4K ULTRA HD</span>
-                <span class="bg-gray-800 text-[10px] px-2 py-1 rounded font-bold text-gray-400">VIRAL</span>
+    <div class="main-container">
+        <!-- Main Player -->
+        <section class="player-section">
+            <video id="main-player" playsinline controls preload="none">
+                <source id="player-src" src="" type="video/mp4" />
+            </video>
+            <div class="p-4">
+                <h2 id="now-playing-title" class="text-lg font-bold leading-tight">Loading Video...</h2>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="bg-rose-600 text-[10px] px-2 py-0.5 rounded font-black">4K</span>
+                    <span class="text-gray-500 text-xs">11.8M views • Live HD</span>
+                </div>
             </div>
+        </section>
+
+        <!-- Adsterra Banner Ad (Under Video Title) -->
+        <div class="adsterra-banner">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '8d8920d5802b25ef1704b9bb1e805773',
+                    'format' : 'iframe',
+                    'height' : 600,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/8d8920d5802b25ef1704b9bb1e805773/invoke.js"></script>
         </div>
-    </section>
 
-    <div class="banner-ad" id="mid-banner"></div>
+        <!-- Related Videos Title -->
+        <div class="w-full px-4 py-2 border-t border-white/10">
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Related Content</h3>
+        </div>
 
-    <div class="px-4 pt-4 border-t border-gray-800">
-        <h3 class="text-md font-bold uppercase tracking-widest text-gray-500">Related Videos</h3>
-    </div>
-    <main class="related-grid" id="video-feed">
+        <!-- Related Grid -->
+        <main class="related-grid" id="video-feed">
+            <!-- Videos dynamically loaded from Supabase -->
         </main>
-
-    <div class="banner-ad" id="bottom-banner"></div>
+    </div>
 
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script>
         const SB_URL = "https://txufnyntlphyloyjddox.supabase.co";
         const SB_KEY = "sb_publishable_B8EAiTgMjvbFg1fJOTCpuA_X7E8NRVF";
         const _supabase = supabase.createClient(SB_URL, SB_KEY);
-
-        // Initialize Plyr
         const player = new Plyr('#main-player', { ratio: '16:9' });
 
-        async function loadContent() {
+        async function initApp() {
             const feed = document.getElementById('video-feed');
-            
             try {
                 const { data: videos, error } = await _supabase.from('videos').select('*').order('created_at', { ascending: false });
                 if (error) throw error;
 
-                // Set initial video (the first one in your database)
-                if (videos.length > 0) {
-                    updatePlayer(videos[0].url, videos[0].title);
-                }
+                if (videos.length > 0) updatePlayer(videos[0].url, videos[0].title);
 
                 videos.forEach(video => {
                     const card = document.createElement('div');
@@ -102,45 +111,29 @@
                         updatePlayer(video.url, video.title);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     };
-                    
                     card.innerHTML = `
-                        <img class="thumb-img" src="https://via.placeholder.com/640x360/1a1a1a/f43f5e?text=WATCH+NOW" alt="thumbnail">
+                        <img class="thumb-img" src="https://via.placeholder.com/400x225/1a1a1a/f43f5e?text=VIRAL+PLAY" alt="thumbnail">
                         <div class="thumb-title">${video.title}</div>
-                        <div class="thumb-meta">11.8M views • 2026</div>
                     `;
                     feed.appendChild(card);
                 });
 
-                // Auto-fullscreen logic
+                // Auto-fullscreen on mobile when play is pressed
                 player.on('play', () => {
-                    if (!player.fullscreen.active) player.fullscreen.enter();
+                    if (window.innerWidth < 768 && !player.fullscreen.active) {
+                        player.fullscreen.enter();
+                    }
                 });
 
-                // Inject Ads into placeholders
-                injectAd('top-banner', '10994775');
-                injectAd('mid-banner', '10993594');
-                injectAd('bottom-banner', '10994775');
-
-            } catch (err) { console.error(err); }
+            } catch (err) { console.error("Database error:", err); }
         }
 
         function updatePlayer(url, title) {
-            const videoElement = document.querySelector('#main-player');
-            videoElement.src = url;
             document.getElementById('now-playing-title').innerText = title;
             player.source = { type: 'video', sources: [{ src: url, type: 'video/mp4' }] };
         }
 
-        function injectAd(id, zone) {
-            const container = document.getElementById(id);
-            const script = document.createElement('script');
-            script.innerHTML = `(function(s){s.dataset.zone='${zone}',s.src='https://n6wxm.com/vignette.min.js'})([document.getElementById('${id}')].filter(Boolean).pop().appendChild(document.createElement('script')))`;
-            container.appendChild(script);
-        }
-
-        window.addEventListener('DOMContentLoaded', loadContent);
+        window.addEventListener('DOMContentLoaded', initApp);
     </script>
-
-    <script>(function(s){s.dataset.zone='10993594',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 </body>
 </html>
