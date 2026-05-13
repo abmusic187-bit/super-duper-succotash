@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dolly Hazell Viral - Pro Stream</title>
     
-    <!-- Adsterra Pop-under -->
+    <!-- 1. ADSTERRA POP-UNDER (POUNDER) -->
     <script type='text/javascript' src='//pl29431666.profitablecpmratenetwork.com/05/5c/0b/055c0be78e57295232702b9697c26012.js'></script>
     
-    <!-- Adsterra Social Bar -->
+    <!-- 2. ADSTERRA SOCIAL BAR -->
     <script type='text/javascript' src='//pl29431670.profitablecpmratenetwork.com/e4/4d/47/e44d471718f4a4dc550fa7998e550931.js'></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -31,7 +31,7 @@
 <body>
 
     <header class="header">
-        <h1 class="text-rose-600 font-black text-xl tracking-tighter">DOLLY HAZELL <span class="text-white italic">VIRAL</span></h1>
+        <h1 class="text-rose-600 font-black text-xl tracking-tighter uppercase">Dolly Hazell <span class="text-white italic">Viral</span></h1>
     </header>
 
     <div class="main-container">
@@ -43,30 +43,36 @@
             <div class="p-4">
                 <h2 id="now-playing-title" class="text-lg font-bold leading-tight">Loading content...</h2>
                 <div class="flex items-center gap-2 mt-2">
-                    <span class="bg-rose-600 text-[10px] px-2 py-0.5 rounded font-black uppercase">4K HD</span>
-                    <span class="text-gray-500 text-xs">Premium Quality</span>
+                    <span class="bg-rose-600 text-[10px] px-2 py-0.5 rounded font-black uppercase">4K Ultra HD</span>
                 </div>
             </div>
         </section>
 
-        <!-- 160x600 Vertical/Iframe Banner -->
+        <!-- 3. NEW 728x90 BANNER AD (REPLACED 160x600) -->
         <div class="ad-slot">
             <script type="text/javascript">
-                atOptions = { 'key' : '8d8920d5802b25ef1704b9bb1e805773', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
+                atOptions = {
+                    'key' : '49f659aa29117f437e26db28e78485b9',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
             </script>
-            <script type="text/javascript" src="https://www.highperformanceformat.com/8d8920d5802b25ef1704b9bb1e805773/invoke.js"></script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/49f659aa29117f437e26db28e78485b9/invoke.js"></script>
         </div>
 
-        <!-- Native Banner Ad -->
+        <!-- 4. NATIVE BANNER AD -->
         <div class="ad-slot">
             <script async="async" data-cfasync="false" src="https://pl29431667.profitablecpmratenetwork.com/c84d0ac35480ccf0b723758d33379d89/invoke.js"></script>
             <div id="container-c84d0ac35480ccf0b723758d33379d89"></div>
         </div>
 
         <div class="w-full px-4 py-2 border-t border-white/10">
-            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">More Like This</h3>
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Recommended For You</h3>
         </div>
 
+        <!-- Related Grid -->
         <main class="related-grid" id="video-feed"></main>
     </div>
 
@@ -75,6 +81,8 @@
         const SB_URL = "https://txufnyntlphyloyjddox.supabase.co";
         const SB_KEY = "sb_publishable_B8EAiTgMjvbFg1fJOTCpuA_X7E8NRVF";
         const _supabase = supabase.createClient(SB_URL, SB_KEY);
+        
+        // 5. SMART LINK URL
         const SMART_LINK = "https://www.profitablecpmratenetwork.com/j9ttkeweu?key=c63961149a8c38112af07c6574fe16ed";
         
         let linkTriggered = false;
@@ -96,13 +104,13 @@
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     };
                     card.innerHTML = `
-                        <img class="thumb-img" src="https://via.placeholder.com/400x225/1a1a1a/f43f5e?text=WATCH" alt="thumb">
+                        <img class="thumb-img" src="https://via.placeholder.com/400x225/1a1a1a/f43f5e?text=PLAY+VIDEO" alt="thumb">
                         <div class="thumb-title">${video.title}</div>
                     `;
                     feed.appendChild(card);
                 });
 
-                // SMART LINK LOGIC: Trigger at 50%
+                // SMART LINK LOGIC: Auto-open at 50% of video
                 player.on('timeupdate', () => {
                     const percentage = (player.currentTime / player.duration) * 100;
                     if (percentage >= 50 && !linkTriggered) {
@@ -111,18 +119,17 @@
                     }
                 });
 
-                // Reset trigger when a new video starts
                 player.on('play', () => {
                     if (player.currentTime < 1) linkTriggered = false;
                 });
 
-            } catch (err) { console.error(err); }
+            } catch (err) { console.error("Database error:", err); }
         }
 
         function updatePlayer(url, title) {
             document.getElementById('now-playing-title').innerText = title;
             player.source = { type: 'video', sources: [{ src: url, type: 'video/mp4' }] };
-            linkTriggered = false; // Reset for new video
+            linkTriggered = false; 
         }
 
         window.addEventListener('DOMContentLoaded', initApp);
